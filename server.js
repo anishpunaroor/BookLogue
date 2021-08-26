@@ -30,3 +30,11 @@ const server = createServer((req, res) => {
             })
     }
 }); 
+
+server.listen(3001, () => {
+    console.log(chalk.green('Server listening on port 3001')); 
+})
+
+const decodeParams = searchParams => Array
+    .from(searchParams.keys())
+    .reduce((acc, key) => ({ ...acc, [key]: searchParams.get(key) }), {}); 
