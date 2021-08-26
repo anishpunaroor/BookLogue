@@ -1,3 +1,4 @@
+// Get modules
 const { createServer } = require('http'); 
 const url = require('url'); 
 const axios = require('axios'); 
@@ -8,3 +9,24 @@ const headers = {
     'Access-Control-Allow-Origin': '*', 
     'Access-Control-Allow-Methods': 'GET', 
 };
+
+// Start web server
+const server = createServer((req, res) => {
+    const requestURL = url.parse(req.url); 
+    const decodeParams = decodeParams(new URLSearchParams(requestURL.search)); 
+    const { search } = decodedParams; 
+    const targetURL = `http://www.recipepuppy.com/api/?q=${search}`;
+    if (req.method === 'GET') {
+        console.log(chalk.green(`Proxy GET request to : ${targetURL}`));
+        axios.get(targetURL)
+            .then(response => {
+                res.writeHead(200, headers);
+                res.end(JSON.stringify(response.data));
+            })
+            .catch(response => {
+                console.log(chalk.red(response));
+                res.writeHead(500, headers); 
+                res.end(JSON.stringify(response)); 
+            })
+    }
+}); 
