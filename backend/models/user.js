@@ -34,9 +34,11 @@ userSchema.methods.matchPassword = async function (plainPassword) {
 userSchema.pre("save", async function (next) {
     let user = this; 
 
+    // If password exists and user has not modified password, skip hashing
     if (!user.isModified("password")) {
         next(); 
     }
+
     if (user.password) {
         const salt = await bcrypt.genSalt(10);
         user.password = await bcrypt.hash(user.password, salt); 
