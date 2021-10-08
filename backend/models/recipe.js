@@ -25,7 +25,7 @@ const reviewSchema = mongoose.Schema(
     }
 ); 
 
-const productSchema = mongoose.Schema(
+const recipeSchema = mongoose.Schema(
     {
         user: {
             type: mongoose.Schema.Types.ObjectId, 
@@ -40,6 +40,10 @@ const productSchema = mongoose.Schema(
             type: String, 
             required: true, 
         },       
+        description: {
+            type: String, 
+            required: true, 
+        }, 
         reviews: [reviewSchema], 
         rating: {
             type: Number, 
@@ -62,5 +66,5 @@ const productSchema = mongoose.Schema(
     }
 ); 
 
-const Product = mongoose.model("Product", productSchema); 
-export default Product; 
+const Recipe = mongoose.model("Recipe", recipeSchema); 
+export default Recipe; 
