@@ -3,9 +3,9 @@ import User from "./../models/user.js"
 import generateToken from "../generateToken.js";
 
 /** 
- * @desc Authorize user & get token 
- * @route POST /api/users/login
- * @access Public
+ * @desc    Authorize user & get token 
+ * @route   POST /api/users/login
+ * @access  Public
  */
 export const authorizeUser = asyncHandler(async (req, res) => {
     // Store data in email and password fields
@@ -27,9 +27,9 @@ export const authorizeUser = asyncHandler(async (req, res) => {
 });
 
 /** 
- * @desc Register a new user
- * @route POST /api/users
- * @access Public
+ * @desc    Register a new user
+ * @route   POST /api/users
+ * @access  Public
  */
 export const registerUser = asyncHandler(async (req, res) => {
     const { name, email, password } = req.body; 
@@ -66,7 +66,7 @@ export const registerUser = asyncHandler(async (req, res) => {
  * @route   GET /api/users
  * @access  Private
  */
- export const getUsers = asyncHandler(async (req, res) => {
+export const getUsers = asyncHandler(async (req, res) => {
     const users = await User.find({});
     res.json(users);
 });
@@ -140,7 +140,7 @@ export const updateUser = asyncHandler(async (req, res) => {
  * @route   PUT /api/users/profile
  * @access  Private
  */
- export const updateUserProfile = asyncHandler(async (req, res) => {
+export const updateUserProfile = asyncHandler(async (req, res) => {
     const user = await User.findById(req.user._id); 
 
     if (user) {
