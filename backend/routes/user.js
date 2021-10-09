@@ -1,6 +1,4 @@
 import express from "express"; 
-
-const router = express.Router(); 
 import {
     authorizeUser,
     deleteUser, 
@@ -12,6 +10,8 @@ import {
     updateUserProfile
 } from "./../controllers/user.js"
 import { isSignedIn, isAdmin } from "./../middleware/auth.js"
+
+const router = express.Router(); 
 
 // User registration/authorization routes
 router.route("/").post(registerUser).get(isSignedIn, isAdmin, getUsers); 
