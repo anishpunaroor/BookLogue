@@ -14,11 +14,10 @@ const router = express.Router();
 
 router.route("/").get(getProducts).post(isSignedIn, isAdmin, createProduct);
 router.route("/:id/reviews").post(isSignedIn, createProductReview);
-router.get("/top", getTopProducts);
-router
-  .route("/:id")
+router.route("/:id")
   .get(getProductById)
   .delete(isSignedIn, isAdmin, deleteProduct)
   .put(isSignedIn, isAdmin, updateProduct);
+router.get("/top", getTopProducts);
 
 export default router;
