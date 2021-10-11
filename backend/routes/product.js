@@ -7,7 +7,7 @@ import {
   getProducts,
   getTopProducts,
   updateProduct,
-} from "./../controller/product.js";
+} from "./../controllers/product.js";
 import { isAdmin, isSignedIn } from "./../middleware/auth.js";
 
 const router = express.Router();

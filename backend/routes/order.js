@@ -6,7 +6,7 @@ import {
   getOrders,
   updateOrderToDelivered,
   updateOrderToPaid,
-} from "../controller/order.js";
+} from "../controllers/order.js";
 import { isSignedIn, isAdmin } from "./../middleware/auth.js";
 
 const router = express.Router();
