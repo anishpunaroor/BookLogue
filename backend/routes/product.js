@@ -5,7 +5,6 @@ import {
   deleteProduct,
   getProductById,
   getProducts,
-  getTopProducts,
   updateProduct,
 } from "./../controllers/product.js";
 import { isAdmin, isSignedIn } from "./../middleware/auth.js";
@@ -18,6 +17,5 @@ router.route("/:id")
   .get(getProductById)
   .delete(isSignedIn, isAdmin, deleteProduct)
   .put(isSignedIn, isAdmin, updateProduct);
-router.get("/top", getTopProducts);
 
 export default router;

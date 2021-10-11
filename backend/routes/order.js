@@ -4,8 +4,8 @@ import {
   getMyOrders,
   getOrderById,
   getOrders,
-  updateOrderToDelivered,
-  updateOrderToPaid,
+  updateDeliveredOrder,
+  updatePaidOrder,
 } from "../controllers/order.js";
 import { isSignedIn, isAdmin } from "./../middleware/auth.js";
 
@@ -16,7 +16,7 @@ router.route("/")
   .get(isSignedIn, isAdmin, getOrders);
 router.route("/myorders").get(isSignedIn, getMyOrders);
 router.route("/:id").get(isSignedIn, getOrderById);
-router.route("/:id/pay").put(isSignedIn, updateOrderToPaid);
-router.route("/:id/deliver").put(isSignedIn, isAdmin, updateOrderToDelivered);
+router.route("/:id/pay").put(isSignedIn, updatePaidOrder);
+router.route("/:id/deliver").put(isSignedIn, isAdmin, updateDeliveredOrder);
 
 export default router;

@@ -103,7 +103,7 @@ export const updateDeliveredOrder = asyncHandler(async (req, res) => {
  * @route   PUT /api/orders/:id/pay
  * @access  Private
  */
- export const updateOrderToPaid = asyncHandler(async (req, res) => {
+ export const updatePaidOrder = asyncHandler(async (req, res) => {
     const order = await Order.findById(req.params.id);
   
     if (order) {
