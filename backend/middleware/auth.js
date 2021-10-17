@@ -30,7 +30,7 @@ export const isSignedIn = asyncHandler(async (req, res, next) => {
     }
 });
 
-// Check if user is an administra tor
+// Check if user is an administrator
 export const isAdmin = (req, res, next) => {
     if (req.user && req.user.isAdmin) {
         next();

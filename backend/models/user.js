@@ -32,9 +32,9 @@ userSchema.methods.matchPassword = async function (plainPassword) {
 }; 
 
 userSchema.pre("save", async function (next) {
-    let user = this; 
+    const user = this; 
 
-    // If password exists and user has not modified password, skip hashing
+    // Only hash the password if it has been modified (or is new)
     if (!user.isModified("password")) {
         next(); 
     }
