@@ -32,7 +32,7 @@ export const processPayment = (req, res) => {
   });
   gateway.transaction.sale(
     {
-      orderId: orderId,
+      orderId,
       amount: clientAmount,
       paymentMethodNonce: clientNonce,
       options: {

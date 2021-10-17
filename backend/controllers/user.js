@@ -121,7 +121,7 @@ export const updateUser = asyncHandler(async (req, res) => {
   if (user) {
     user.name = req.body.name || user.name;
     user.email = req.body.email || user.email;
-    user.isAdmin = req.body.hasOwnProperty("isAdmin") ? req.body.isAdmin : user.isAdmin;
+    user.isAdmin = req.body.getOwnPropertyDescriptor("isAdmin") ? req.body.isAdmin : user.isAdmin;
 
     const updatedUser = await user.save();
 
@@ -134,7 +134,6 @@ export const updateUser = asyncHandler(async (req, res) => {
   }
   res.status(404);
   throw new Error("User not found!");
-  
 });
 
 /**
@@ -161,10 +160,9 @@ export const updateUserProfile = asyncHandler(async (req, res) => {
       isAdmin: updatedUser.isAdmin,
       token: generateToken(updatedUser._id),
     });
-  } 
+  }
   res.status(404);
   throw new Error("User not found!");
-  
 });
 
 /**

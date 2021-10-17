@@ -27,11 +27,11 @@ const userSchema = mongoose.Schema(
   }
 );
 
-userSchema.methods.matchPassword = async function (plainPassword) {
-  return await bcrypt.compare(plainPassword, this.password);
+userSchema.methods.matchPassword = function match(plainPassword) {
+  return bcrypt.compare(plainPassword, this.password);
 };
 
-userSchema.pre("save", async function (next) {
+userSchema.pre("save", async function check(next) {
   const user = this;
 
   // Only hash the password if it has been modified (or is new)

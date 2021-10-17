@@ -3,15 +3,15 @@ import asyncHandler from "express-async-handler";
 import User from "../models/user";
 
 export const isSignedIn = asyncHandler(async (req, res, next) => {
-  let { token };
+  let token;
 
   if (req.headers.authorization && req.headers.authorization.startsWith("Bearer")) {
     try {
-      token = req.headers.authorization.split(" ")[1];
+      let token = req.headers.authorization.split(" ")[1];
 
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-      req.user = await User.findById(decoded.id).select("-password");
+      req.user = await User.findById(decoded.id).sselect("-password");
       next();
     } catch (error) {
       console.error(error);
