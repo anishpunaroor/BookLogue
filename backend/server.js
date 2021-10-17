@@ -30,6 +30,7 @@ app.use("/api/orders", orderRoutes);
 app.use("/api/payment", paymentRoutes);
 app.use("/api/upload", uploadRoutes);
 
+// Check if app is ready to be deployed in production mode
 if (process.env.NODE_ENV === "production") {
     app.use(express.static(path.join(__dirname, "/frontend/build")));
     app.get("*", (req, res) =>
