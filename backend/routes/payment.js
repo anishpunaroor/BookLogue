@@ -1,10 +1,10 @@
-import express, { Router } from "express"; 
-import { isSignedIn } from "../middleware/auth.js";
-import { getToken, processPayment } from "./../controllers/payment.js"; 
+import express from "express";
+import { isSignedIn } from "../middleware/auth";
+import { getToken, processPayment } from "../controllers/payment";
 
 const router = express.Router();
 
-router.route("/getToken").get(isSignedIn, getToken); 
-router.route("/").post(isSignedIn, processPayment); 
+router.route("/getToken").get(isSignedIn, getToken);
+router.route("/").post(isSignedIn, processPayment);
 
-export default router; 
+export default router;

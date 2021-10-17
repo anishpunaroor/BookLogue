@@ -1,15 +1,17 @@
 import express from "express";
 import dotenv from "dotenv";
 import morgan from "morgan";
-import connectDB from "./db.js";
-import { errorHandler, notFound } from "./middleware/error.js";
+import path from "path";
+
+import connectDB from "./db";
+import { errorHandler, notFound } from "./middleware/error";
 
 // Import routes
-import productRoutes from "./routes/product.js";
-import userRoutes from "./routes/user.js";
-import orderRoutes from "./routes/order.js";
-import paymentRoutes from "./routes/payment.js";
-import uploadRoutes from "./routes/upload.js";
+import productRoutes from "./routes/product";
+import userRoutes from "./routes/user";
+import orderRoutes from "./routes/order";
+import paymentRoutes from "./routes/payment";
+import uploadRoutes from "./routes/upload";
 
 dotenv.config();
 
@@ -32,19 +34,19 @@ app.use("/api/upload", uploadRoutes);
 
 // Check if app is ready to be deployed in production mode
 if (process.env.NODE_ENV === "production") {
-    app.use(express.static(path.join(__dirname, "/frontend/build")));
-    app.get("*", (req, res) =>
-        res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"))
-    );
+  app.use(express.static(path.join(__dirname, "/frontend/build")));
+  app.get("*", (req, res) =>
+    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"))
+  );
 } else {
-    app.get("/", (req, res) => {
-        res.send("API is running...");
-    });
+  app.get("/", (req, res) => {
+    res.send("API is running...");
+  });
 }
 
 app.use(notFound);
 app.use(errorHandler);
 
 app.listen(PORT, () => {
-  console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}!`)
-})
+  console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}!`);
+});

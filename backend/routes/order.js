@@ -6,14 +6,12 @@ import {
   getOrders,
   updateDeliveredOrder,
   updatePaidOrder,
-} from "../controllers/order.js";
-import { isSignedIn, isAdmin } from "./../middleware/auth.js";
+} from "../controllers/order";
+import { isSignedIn, isAdmin } from "../middleware/auth";
 
 const router = express.Router();
 
-router.route("/")
-  .post(isSignedIn, addOrderItems)
-  .get(isSignedIn, isAdmin, getOrders);
+router.route("/").post(isSignedIn, addOrderItems).get(isSignedIn, isAdmin, getOrders);
 router.route("/myorders").get(isSignedIn, getMyOrders);
 router.route("/:id").get(isSignedIn, getOrderById);
 router.route("/:id/pay").put(isSignedIn, updatePaidOrder);
