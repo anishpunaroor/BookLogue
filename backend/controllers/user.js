@@ -12,6 +12,10 @@ export const authorizeUser = asyncHandler(async (req, res) => {
     const { email, password } = req.body; 
     // Find user within the email database 
     const user = await User.findOne({ email }); 
+    if (!user) {
+        res.status(401);
+        throw new Error("User doesn't exist.");
+    }
     if (user && (await user.matchPassword(password))) {
         return res.json({
             _id: user._id, 
@@ -23,7 +27,7 @@ export const authorizeUser = asyncHandler(async (req, res) => {
     }
 
     res.status(401); 
-    throw new Error("Invalid email and/or password.")
+    throw new Error("Invalid email and/or password.");
 });
 
 /** 
