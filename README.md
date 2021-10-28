@@ -1,6 +1,6 @@
-# Booklogue
+# BookLogue
 
-BookLogue is a full-stack web application I created to post and review books that I hav read. This application was built using the MERN stack and Redux with a Paypal payment gateway (powered by Braintree).
+BookLogue is a full-stack web application I created to post and review books that I have read. This application was built using the MERN stack and Redux with a Paypal payment gateway (powered by Braintree).
 
 ## Features
 
@@ -35,7 +35,7 @@ cd Booksify
 
 ### Env variables setup
 
-Create an .env file in the Booksify root directory and add the following
+Create an .env file in the Booksify backend directory and add the following:
 
 ```
 NODE_ENV = development

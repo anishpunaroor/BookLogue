@@ -26,9 +26,6 @@ export const createProduct = asyncHandler(async (req, res) => {
  * @route   POST /api/products/:id/reviews
  * @access  Private
  */
-// @desc    Create new review
-// @route   POST /api/products/:id/reviews
-// @access  Private
 export const createProductReview = asyncHandler(async (req, res) => {
   const { rating, comment } = req.body;
 
