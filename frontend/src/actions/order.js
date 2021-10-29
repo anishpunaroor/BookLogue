@@ -20,12 +20,14 @@ import {
   ORDER_DELIVER_FAIL,
 } from "./../constants/order";
 
+// Create an order
 export const createOrder = (order) => async (dispatch, getState) => {
   try {
     dispatch({
       type: ORDER_CREATE_REQUEST,
     });
 
+    // Get info about the user creating the order
     const {
       userLogin: { userInfo },
     } = getState();
@@ -54,6 +56,7 @@ export const createOrder = (order) => async (dispatch, getState) => {
   }
 };
 
+// Get details about an order
 export const getOrderDetails = (id) => async (dispatch, getState) => {
   try {
     dispatch({
@@ -87,6 +90,7 @@ export const getOrderDetails = (id) => async (dispatch, getState) => {
   }
 };
 
+// Pay for an order
 export const payOrder =
   (orderId, paymentResult) => async (dispatch, getState) => {
     try {
@@ -163,6 +167,7 @@ export const deliverOrder = (order) => async (dispatch, getState) => {
   }
 };
 
+// List the user's orders 
 export const listMyOrders = () => async (dispatch, getState) => {
   try {
     dispatch({
@@ -196,6 +201,7 @@ export const listMyOrders = () => async (dispatch, getState) => {
   }
 };
 
+// List all orders
 export const listOrders = () => async (dispatch, getState) => {
   try {
     dispatch({
