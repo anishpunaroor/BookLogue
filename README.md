@@ -61,8 +61,10 @@ yarn install
 
 ```
 # Run frontend (:3000) & backend (:5000)
+cd backend
 npm run dev
 
 # Run backend only
+cd backend
 npm run server
 ```
